@@ -1,0 +1,123 @@
+/* Resize Label */
+.formtastic .input .label {
+display: block;
+width: 100px;
+height:20px;
+color:black;
+font-size: 12pt;
+}
+/* Resize input */
+.formtastic .stringish input {
+width: 200px;
+height:20px;
+}
+
+/* Resize Select */
+.formtastic select{
+    float: left; 
+    width: 100px;
+    height:20px;
+}
+/* Set Width */
+.formtastic w300px {
+    width: 300px;
+}
+
+/* Same line */
+form.formtastic fieldset.inline_fields  li { 
+    float: left; 
+    width: 100px; 
+    margin-left: 0em;
+}
+
+form.formtastic fieldset.inline_fields  ol { 
+    margin-left: 0em
+} 
+
+form.formtastic > fieldset.inline_fields > ol > li > select { 
+    float: left; 
+    width: 100px; 
+    height:21.5px;
+}
+
+.formtastic table select {
+float: left;
+display: block;
+width: 100px;
+}
+
+.formtastic table  .stringish input  {
+float: left;
+display: block;
+width: 50px;
+}
+
+
+/* Select Date*/
+.formtastic .fragments .fragments-group .fragment select {
+float: left;
+display: inline;
+width: 100px;
+}
+
+
+.formtastic .actions .action input{
+float: left;
+display: inline;
+width: 150px;
+}
+
+.formtastic .inline-errors {
+  color:red;
+  margin:0.5em 0 0 25%;
+}
+
+/* ABove are tested */
+/* For layout */
+.LoanRate {
+color: red;
+background-color: green;
+font-size: 48pt;
+text-align:center;
+}
+/* color:maroon; */
+.head1 {
+color:DarkGray;
+text-align:center;
+font-size: 24pt;
+margin-bottom: 0.5em;
+}
+.head2 {
+color:red;
+text-align:center;
+font-size: 12pt;
+margin-bottom: 0.5em;
+}
+.title1 {
+color:DarkGray;
+text-align:center;
+font-size: 18pt;
+margin-bottom: 0.5em;
+}
+.title2 {
+color:DarkRed;
+text-align:center;
+font-size: 12pt;
+margin-bottom: 0.5em;
+}
+
+.footer {
+color:green;
+font-size: 12pt;
+position:fixed; 
+bottom:0;
+}
+
+.restrict {
+color:DarkGray;
+text-align:center;
+font-size: 12pt;
+color:green;
+}
+
+ 

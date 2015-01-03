@@ -1,0 +1,39 @@
+<div class="strata-container container">
+  <div class="stratum-row row-fluid">
+    <div class="col-md-9 stratum news-stratum">
+
+
+      <div class="news-filters">
+        <ul class="nav nav-pills filters">    
+          <%= news_filters %>
+        </ul>
+      </div>
+
+      <div id="article-list">
+        <% unless @articles.nil? %>
+        <% @articles.each do |article| %>
+            <hr/>
+            <div class="article">
+              <h3><%= link_to_article(article) %></h3>     
+              <% if article.source_site %>
+                <span class="source">
+                  <%= "#{article.source_site} | " %>
+                </span>
+              <% end %>
+              <span class="date">
+                <%= article.published_on.try(:to_formatted_s, :long) %>
+              </span>
+
+              <div class="content">
+
+              </div>
+            </div>
+        <% end %><% end %>
+        <%= page_link(@articles)%>
+      </div>
+    </div>
+    <div class="col-md-3">
+
+    </div>
+  </div>
+</div>

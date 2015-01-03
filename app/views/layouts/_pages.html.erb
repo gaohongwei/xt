@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html >
+<head>
+  <title><%= get_web_title() %></title>
+  <!--link rel="stylesheet" type="text/css" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css-->
+  <!--script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script-->
+
+  <%= stylesheet_link_tag    "application" %>
+  <%= javascript_include_tag "application" %>
+  <%= csrf_meta_tags %>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+</head>
+<body>
+<%= menu_bar %>
+<div class='container-fluid' style='padding-top: 1px'>
+  <% flash.each do |name, msg| %>
+    <%= display_toast_message(msg, name) %>
+  <% end %>
+  <div class="row">
+    <div class="col-md-1"></div>
+    <div class="col-md-10">
+      <%= display(get_body_header(),2) %>
+      <%= yield %>
+      <%= debug params %>       
+    </div>
+    <div class="col-md-1"></div>
+  </div>
+  <div class="row well">
+  <%= render 'shared/footer' %>
+  </div>    
+</div> 
+</body>
