@@ -1,12 +1,11 @@
-class TaskOptionsController < AdminController0
-  def index
+class TaskOptionsController < AdminController
+  def index_scope
     id= params[:id]
     if id 
-      @objs=TaskOption.by_task(id)
+      @objs=TaskOption.by_task(id).page(params[:page]).per(10)
     else
-      @objs=TaskOption.all
+      @objs=TaskOption.all.page(params[:page]).per(10)
     end
-    respond_with @objs
   end 
 
   private

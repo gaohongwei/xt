@@ -6,10 +6,16 @@ class Task < ActiveRecord::Base
   has_many :options, :class_name=>'TaskOption'
   belongs_to :user
   belongs_to :type,:class_name=>'TaskType',:foreign_key=>'type_id' 
+  has_many :task_groups
+  has_many :groups,through: :task_groups  
   scope :top, lambda {
     #where(ancestry:nil).where(active:true)  
     where(pid:nil).where(active:true).order('order_by asc')       
   }
+  scope :by_ids, lambda {|id|
+    #where(ancestry:nil).where(active:true)  
+    where(id:id)      
+  }  
   def set_parent_id
     self.parent_id=self.pid   
   end 

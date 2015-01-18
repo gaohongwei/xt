@@ -1,13 +1,43 @@
-class Admin::UsersController < AdminController
+class UsersController < AdminController
   #before_action :set_widget, only: [:show, :edit, :update, :destroy]
   load_and_authorize_resource :only => [:edit,:update,:show,:destroy]
-  before_filter :authenticate_user!, :except => [:new,:create,:index] 
-  def index
-    @objs= User.all.page(params[:page]).per(10)
-    @checkbox=nil
-    #respond_with(@user)
+  before_filter :authenticate_user!#,:except => [:new,:create,:index] 
+  def index_scope
+    # if current_user.admin?
+    # if current_user.group_owner?(gid)
+    # if current_user.group_admin?(gid)
+    # if current_user.joined_group(gid) #approved           
+    gid=params[:group_id]
+    if gid
+      # already processed
+      #@objs= @objs.by_group(gids)
+    else
+      if current_user.admin?
+        # No rectriction
+        #@objs= @objs.all
+      else
+        gids=current_user.group_ids        
+        @objs= @objs.by_group(gids)
+      end     
+    end
+    params[:gids]=gids   
+    params[:index_scope]=@objs.inspect     
   end
-
+  def index_last
+    gid=params[:group_id]
+    group=Group.find(gid)
+    if gid && can?(:manage, group)
+      @checkbox=[
+        {label:'approve',  call:"add('/users')"},
+        {label:'kickout',call:"delete('/users')"},
+      ]
+      gname=group.name
+      @header=tts('user list,group:') + gname
+      caption_columns='email;vname;active'
+      @columns = get_array(caption_columns,0)
+      @captions= get_array(caption_columns,1) 
+    end
+  end  
   def new
     @obj= User.new
     #respond_with(@user)

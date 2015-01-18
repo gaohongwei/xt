@@ -3,7 +3,7 @@ module DATA_DEF
   page: "页面", 
   user: "用户", 
   article: "文章",
-  type: "文章类型", 
+  type: "类型", 
   classified: "专栏",  
   document: "分类文档",      
   news: "新闻", 
@@ -15,7 +15,8 @@ module DATA_DEF
   template: "模板",
   customer: "成功案例",  
   brief: "功能介绍", 
-  help: "帮助文档",   
+  help: "帮助文档",
+  vhelp: "视频教程",  
   about_us: "关于我们",   
 
   media: "多媒体",  
@@ -80,15 +81,13 @@ menu:[
     {pid:1,name:tt[:template],url:'/admin/templates'},
     {pid:2,name:tt[:sys_setting],url:'/admin/settings'},
     {pid:2,name:tt[:viewadm],url:'/admin/view_adms'},
-    {pid:5,name:tt[:user],url:'/admin/users'}, 
+    {pid:5,name:tt[:user],url:'/users'}, 
     {pid:5,name:tt[:group],url:'/groups'},         
     {pid:5,name:tt[:role],url:'/roles'},
     # pid:1, defined in wpage
     {pid:7,name:tt[:index],url:'/index'},    
-    {pid:6,name:'Task',url:'/tasks'},  
-    {pid:6,name:'Task Types',url:'/task_types'},    
-    {pid:6,name:'Task History',url:'/task_hists'},  
-    {pid:6,name:'Task Times',url:'/task_times'}, 
+    {pid:6,name:tt[:all],url:'/tasks'},  
+    {pid:6,name:tt[:type],url:'/task_types'},    
 
     {pid:8,name:tt[:customer],url:"/tasks"},    
 
@@ -97,9 +96,10 @@ menu:[
     {pid:9,name:tt[:news],url:'/news/news'},   
     {pid:9,name:tt[:notice],url:'/news/notice'},  
     {pid:9,name:tt[:event],url:'/admin/events?scope=slide'}, 
-    {pid:9,name:tt[:funlife],url:"/news/#{tt[:funlife]}"},#funlife  
+    #{pid:9,name:tt[:funlife],url:"/news/#{tt[:funlife]}"},#funlife  
     {pid:10,name:tt[:brief],url:"/papers/index"}, 
-    {pid:10,name:tt[:help],url:"/papers/help"},     
+    {pid:10,name:tt[:help],url:"/papers/help"}, 
+    {pid:10,name:tt[:vhelp],url:"/papers/vhelp"},         
   ],  
 }
 end

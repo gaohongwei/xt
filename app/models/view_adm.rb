@@ -5,6 +5,7 @@ class ViewAdm < ActiveRecord::Base
   }
   scope :by_action, ->(action) {
     where(:action_scope=>action)
+    #where("action_scope LIKE (?)", "#{action}%")
   } 
   scope :by_cap_col, ->(cap_col) {
     where(:cap_col=>cap_col)

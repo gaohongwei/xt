@@ -2,8 +2,12 @@ Rails.application.routes.draw do
   devise_for :users do
     get 'sign_out' => 'devise/sessions#destroy'
     get 'logout' => 'devise/sessions#destroy'    
-  end    
-  get "pages/show"
+  end  
+  get "pages/show"  
+  resources :users  
+  resources :authentications   
+  get '/auth/:provider/callback' => 'authentications#create'   
+  #get '/oauth/authorize' => 'authentications#create'        
   namespace :admin do 
     resources :words     
     resources :gallery_media
@@ -22,19 +26,21 @@ Rails.application.routes.draw do
     resources :widgets
     resources :menus
     resources :view_adms
-    resources :user_groups
-    resources :groups do
-      resources :users
-    end
-    resources :settings  
-    resources :users             
+    resources :settings             
   end
-  resources :tasks 
+  resources :tasks do
+    resources :task_options
+    #resources :task_options,:path => :options      
+  end
   resources :task_types 
   resources :task_options  
   resources :task_option_answers 
-  resources :roles   
-  resources :groups    
+  resources :roles 
+
+  resources :groups do
+    resources :users 
+  end  
+  resources :user_groups   
   namespace :api, defaults: { format: "json" } do
     namespace :v1 do
       resources :tasks

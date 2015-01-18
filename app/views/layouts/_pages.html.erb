@@ -16,13 +16,14 @@
 <div class='container-fluid' style='padding-top: 1px'>
   <% flash.each do |name, msg| %>
     <%= display_toast_message(msg, name) %>
+    <%= msg %>      
   <% end %>
   <div class="row">
     <div class="col-md-1"></div>
     <div class="col-md-10">
       <%= display(get_body_header(),2) %>
       <%= yield %>
-      <%= debug params %>       
+      <%= debug params %>                  
     </div>
     <div class="col-md-1"></div>
   </div>

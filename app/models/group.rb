@@ -1,8 +1,11 @@
 class Group < ActiveRecord::Base
   has_many :user_groups
-  has_many :users,:through=>:user_groups
+  has_many :task_groups  
+  has_many :users,through: :user_groups
+  has_many :tasks,through: :task_groups  
   before_save :set_default
   before_destroy :stop_delete
+  attr_accessor :my_role   
   def stop_delete
    if self.id < 11
      raise ActiveRecord::Rollback

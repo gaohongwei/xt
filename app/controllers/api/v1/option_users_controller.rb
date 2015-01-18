@@ -1,6 +1,6 @@
 module Api::V1
 class OptionUsersController < AdminController
-  skip_before_filter :authenticate_user!  
+  #skip_before_filter :authenticate_user!  
   protect_from_forgery
   respond_to :json 
   def index
@@ -8,7 +8,7 @@ class OptionUsersController < AdminController
     # Find all children task_id for 
     # Find all option_id for a user on this task   
     # save as {task_id:[option_id,...]}
-    set_current_user() 
+    login User.guest if current_user.nil?
     uid= params[:uid]
     tid= params[:tid]
     if uid && uid == 'me'
@@ -18,12 +18,13 @@ class OptionUsersController < AdminController
     respond_with objs   
   end 
   def create
-    set_current_user() 
-    logger.debug "current_user=#{current_user}"
+    logger.debug "user_id=#{current_user.id}"    
+    login User.guest if current_user.nil?
     user_id=current_user.id 
     new_option_ids=params[:option_user][:opts]    
     OptionUser.set_options(new_option_ids,user_id) 
     #respond_with new_option_ids 
+    logger.debug "user_id=#{user_id}"
     render :json => {:options => new_option_ids}
   end  
   def show

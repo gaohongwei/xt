@@ -1,9 +1,12 @@
 source 'https://rubygems.org'
-
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.1.6'
 gem 'devise'
 gem 'cancan'
+gem 'omniauth'
+gem 'omniauth-oauth2'
+gem 'omniauth-twitter'
+
 gem "paperclip", "~> 4.2"
 gem 'ancestry'
 gem 'kaminari' 

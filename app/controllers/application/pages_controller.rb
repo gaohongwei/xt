@@ -1,4 +1,4 @@
-class Application::PagesController < ActionController::Base 
+class Application::PagesController < ApplicationController
   def show
     page_url = url = params[:url]
     page_url = 'home' if url.nil?||url.empty?

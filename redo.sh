@@ -93,10 +93,13 @@ copy_templates(){
 	cd $DST
 	echo "copy_templates, database.yml, application.rb"
 	cp -f  $com/config/application.rb    config/	
-	cp -r  $com/lib .
-	cp -f  $com/config/database.yml config/
-}
+	cp -f  $com/config/database.yml      config/	
 
+	cp -r  $com/lib .
+}
+copy_oauth2(){
+	cp -f  $com/config/initializers/omniauth.rb      config/initializers/	
+}
 cfg_route_old(){
 	#Update routes.rb	
 	#fname="$SRV/$PRJ/config/routes.rb"
@@ -212,6 +215,7 @@ elif [ "x${act}x" = "xallx" ]; then
 	cd  $DST
 	CRT="$com/crt_prj.sh"
 	[ -f $CRT ] && . $CRT && create_project	
+	copy_oauth2
 	#cfg_route # copy full routes
 	add_page_route
 	cfg_css_js

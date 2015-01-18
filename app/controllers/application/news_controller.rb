@@ -19,7 +19,7 @@ class Application::NewsController < ApplicationController
     per_page = 10
 
     @filter = params[:type]||tt('news') 
-    tts_news_notice=tts('news&notice','&',true)
+    tts_news_notice=tts('news&notice',true)
     #params[:tts]=tts_news_notice
     if [tts_news_notice,tt('news'),tt('notice'),'news','notice'].include?(@filter)  || tts_news_notice == @filter
       cookies[:filter_group]=[tt('news'),tt('notice')]

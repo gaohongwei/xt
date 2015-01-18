@@ -3,7 +3,7 @@ class TasksController < AdminController
   protect_from_forgery
   respond_to :json  
   def show
-    current_user||=User.find(2)    
+    current_user||=User.guest    
     t=Task.find(params[:id])
     @root_id=t.root_id
     @user_id=current_user.id    

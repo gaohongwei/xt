@@ -77,8 +77,7 @@ article:[
     {title: '功能介绍',
     tag_list: '帮助', 
     permalink:'index',
-    content:
-    '
+    content:'
 <p>当我们策划一项活动时， 可能要涉及到很多人的不同意见和想法，包括不同的时间，不同的方法等。为解决分歧，寻求共识，我们就不得不开会。</p> 
 <p>本网站提供一个的方案，它提供一个平台，起到收集、协调、整合意见的作用，具体流程如下：</p> 
 <ul> 
@@ -92,26 +91,29 @@ article:[
 
 当然，最后可能还是需要组织者的决断。</p> 
 <p>该网站适用于朋友间的活动协调，如同学聚会，朋友聚餐，结伴旅行，联欢会节目表，也可用公司内的技术方案要点讨论。</p>'
-        },
+    },
     {title: '使用手册',
     tag_list: '帮助', 
     permalink:'help',
-    content:
-    '
+    content:"
 <p>使用手册</p> 
-<p>第一步</p> 
-<p>第二步</p> 
-<p>第三步</p> 
-'
-        },        
-    {title: '黄金英,双铺精英广场舞赞赞赞',
-    tag_list: '精彩人生', 
-    permalink:'http://v.youku.com/v_show/id_XNzg2MjUxMzAw.html?tpa=dW5pb25faWQ9MTAzMjUyXzEwMDAwMV8wMV8wMQ'
-    },
-    {title: '记武汉市人大代表谢国英',
-    tag_list: '精彩人生', 
-    permalink:'http://www.whrd.gov.cn/dbfc/4147.shtml'
-    }    
+<p>第一步：登陆。您可以使用guest@gmail.com登陆，密码为password。</p> 
+<p>用公用用户可以收集信息，但统计数据就没意义，因为是同一用户。</p>
+<p>建议您注册自己的用户名。</p>
+<p>第二步：依次选择‘协调活动&任务’、‘所有’菜单，新建并选择（点击）您自己的活动&任务。您将进入‘显示:活动、任务‘页面。</p> 
+<p>第三步：在’显示:活动、任务‘页面下部，点击‘输入和选择’按钮，您将进入‘活动、任务输入和选择’页面。</p> 
+<p>第四步：在页面移动鼠标，您将看到动态提示。</p> 
+"
+    },        
+    {title: '视频教程',
+    tag_list: '帮助', 
+    permalink:'vhelp',
+    content:"
+<p>视频教程</p> 
+<p>第一节：待加</p> 
+<p>第二节：待加</p> 
+"
+  },          
   ],              
 }
 end

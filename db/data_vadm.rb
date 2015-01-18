@@ -76,16 +76,29 @@ view_adm:[
       caps:"name;description;photo"
     },  
 ############## Task View 
-# act,scope,label,nested_res=action_scope.split(':')
+# act,scope,label,nested_res=action_scope.split(':')               
+    {name:'task',action_scope:'show:input:user_input'},
+    {name:'task',action_scope:'show:count'}, 
+    #name:'task',action_scope:'index::option_mgr:task_options'},
+    {name:'task',action_scope:'show:option:option_mgr'},          
     {name:'task',action_scope:'index',
-      cols:"name;description;user.name;public",  
+      cols:"name;description;user.vname;public",  
       caps:"name;description;owner;public"         
     },  
-    {name:'task',action_scope:'show'},      
-    {name:'task',action_scope:'show:count'},          
-    {name:'task',action_scope:'show:option:user_input'}, 
-    {name:'task',action_scope:'edit'      
-    },           
+    {name:'task',action_scope:'show',
+      cols:"name;description;user.vname;type.name;show_answer;public",  
+      caps:"name;description;owner;type;show_answer;public" 
+    },             
+    {name:'task',action_scope:'edit'},     
+    
+    {name:'task_option',action_scope:'index',
+      cols:"task.name;name;user.vname",  
+      caps:"task;name;user"         
+    },   
+    {name:'task_option',action_scope:'edit',
+      cols:"task.name;name;description;user.vname",  
+      caps:"task;name;description;user"         
+    },                 
     #{name:'task',action_scope:'index:tree'},      
 ############## Menu View     
     {name:'menu',action_scope:'index',
@@ -158,7 +171,7 @@ view_adm:[
       caps:"name;description"
     },   
 # act,scope,label,nested_res=action_scope.split(':')       
-    {name:'type',action_scope:'show:article:tye article list:articles'
+    {name:'type',action_scope:'show:article:type article list:articles'
     },  # label='group article list'    
     {name:'type',action_scope:'show',
       cols:"name;description",
@@ -184,8 +197,8 @@ view_adm:[
     },  
 ########## User
     {name:'user',action_scope:'index',
-      cols:"email;name;vname;cell;qq;wechat;other;groups.first.name;active",
-      caps:"email;name;vname;cell;qq;wechat;other;group;active"
+      cols:"email;vname;cell;qq;wechat;other;groups.first.name;active",
+      caps:"email;vname;cell;qq;wechat;other;group;active"
     }, 
     {name:'user',action_scope:'edit',
       cols:"name;vname;email;cell;qq;wechat;other;active;groups:c",
@@ -197,16 +210,24 @@ view_adm:[
     },
 ########## Group
     {name:'group',action_scope:'index',
-      cols:"name;description;active",
-      caps:"name;description;active"
+      cols:"name;description;my_role;active",
+      caps:"name;description;my_role;active"
     },
 # act,scope,label,nested_res=action_scope.split(':')    
-    {name:'group',action_scope:'show:user:group user list:users',
+    {name:'group',action_scope:'show:user:group_user_list:users',
     }, # label='group user list'
     {name:'group',action_scope:'show',
-      cols:"name;description;active;user_list",
-      caps:"name;description;active;users"
+      cols:"name;description;active;my_role;user_list",
+      caps:"name;description;active;my_role;users"
     }, 
+    {name:'group',action_scope:'show:join:join_group',
+      cols:"name;description;active;my_role;user_list",
+      caps:"name;description;active;my_role;users"
+    }, 
+    {name:'group',action_scope:'show:leave:leave_group',
+      cols:"name;description;active;my_role;user_list",
+      caps:"name;description;active;my_role;users"
+    },         
     {name:'group',action_scope:'edit',
       cols:"name;description;active;users:c",
       caps:"name;description;active;users"

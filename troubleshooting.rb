@@ -31,6 +31,11 @@ gem 'jquery-rails'
   end 
 6 /app/app/models/setting:string.rb:1: syntax error, unexpected tSYMBEG, expecting
   rails g settings setting
+7.Can't verify CSRF token authenticity
+
+8. def tts
+
+
 
 7 Run in production
 RAILS_ENV=production rake assets:precompile

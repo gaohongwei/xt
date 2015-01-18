@@ -28,8 +28,26 @@ task_type:[
 ],
 task:[ 
     { name:'协调网框架版，意见收集',
-        description:'针对协调网框架版，收集意见。',user_id:1,active:true,public:true
+        description:'针对协调网框架版，收集意见。',user_id:2,active:true,public:true
     },
+    { name:'2015年聚会策划',
+        description:'征集2015年聚会策划',user_id:2,active:true,public:true
+    },
+    { name:'新洲一中同学会画册第一稿FIT：反馈',
+        description:'新洲一中同学会画册第一稿FIT，意见收集',user_id:2,active:true,public:true
+    },
+    { name:'优点',
+        description:'意见收集',user_id:2,active:true,pid:3
+    },
+    { name:'更正',
+        description:'意见收集',user_id:2,active:true,pid:3
+    },
+    { name:'不足之处',
+        description:'意见收集',user_id:2,active:true,pid:3
+    },  
+    { name:'遗漏项目',
+        description:'意见收集',user_id:2,active:true,pid:3
+    },         
     ],
 }
 end

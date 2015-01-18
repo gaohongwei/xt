@@ -18,7 +18,7 @@ class TaskOption < ActiveRecord::Base
     select("task_options.id, task_options.name,count(option_users.id) AS vote").
     joins("LEFT JOIN option_users ON option_users.option_id = task_options.id").
     group("task_options.id").
-    order("vote desc")
+    order("vote desc,task_options.name asc")
   end 
   scope :by_task_with_user,lambda {
     select("task_options.id,task_options.name,task_options.task_id,task_options.user_id,users.wname").  
