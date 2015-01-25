@@ -8,8 +8,6 @@ class ApplicationController < ActionController::Base
   include ApplicationHelper
   include CrudHelper 
 
-
-
   layout :layout_by_resource  
   def layout_by_resource
     #if devise_controller?

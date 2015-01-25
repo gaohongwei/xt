@@ -160,18 +160,6 @@ cfg_data(){
 	echo "Created tables and inserted data"			
 }
 
-copy_files0(){
-	cd $DST
-	cp -f  $com/db/seeds.rb db/
-	cp -f  $com/config/en.yml    config/locales/
-	#cp -r  $com/config/routes.rb    config/
-	cp -r  $com/assets      app/
-	cp -r  $com/helpers     app/
-	cp -r  $com/models      app/
-	cp -r  $com/controllers app/
-	#cp -r  $com/mailers     app/
-	#cp -f  $com/gem/Gemfile.lock .
-}
 copy_files(){
 	cd $DST
 	#mkdir config/initializers

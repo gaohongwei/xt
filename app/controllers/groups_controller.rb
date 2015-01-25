@@ -7,12 +7,12 @@ class GroupsController < AdminController
       end
     end    
   end  
-  def index_last
+  def index_customize()
     @objs.each do |group|
-      group.my_role=current_user.role_of_group(group.id)      
+      group.my_role=current_user.role_of_group(group.id)    
     end     
   end   
-  def show
+  def show_customize()
     opr=params[:scope]
     group_id=params[:id]
     if opr == 'join'
@@ -20,9 +20,9 @@ class GroupsController < AdminController
     elsif opr == 'leave'
       current_user.leave_group(group_id)
     end
-    @obj=Group.find(group_id)
+    #@obj=Group.find(group_id)
     @obj.my_role=current_user.role_of_group(group_id)
-    render :show
+    #render :show
   end
 
   private

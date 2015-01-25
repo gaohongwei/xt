@@ -8,34 +8,42 @@ class UsersController < AdminController
     # if current_user.group_admin?(gid)
     # if current_user.joined_group(gid) #approved           
     gid=params[:group_id]
-    if gid
-      # already processed
-      #@objs= @objs.by_group(gids)
+    #return if gid # already processed      
+    #@objs= @objs.by_group(gids)
+    if current_user.admin?      
+      #@objs= @objs.all # No rectriction
+      logger.debug "=================="
+      logger.debug "current_user.admin" 
+      logger.debug "=================="               
     else
-      if current_user.admin?
-        # No rectriction
-        #@objs= @objs.all
-      else
-        gids=current_user.group_ids        
-        @objs= @objs.by_group(gids)
-      end     
-    end
+      gids=current_user.joined_group_ids        
+      @objs= @objs.by_group(gids)
+      logger.debug "=================="
+      logger.debug "not admin"         
+    end     
+
     params[:gids]=gids   
     params[:index_scope]=@objs.inspect     
   end
-  def index_last
+  def index_customize
     gid=params[:group_id]
-    group=Group.find(gid)
-    if gid && can?(:manage, group)
+    return if gid.nil?
+
+    group=Group.find(gid) 
+    if group && can?(:manage, group)
       @checkbox=[
-        {label:'approve',  call:"add('/users')"},
-        {label:'kickout',call:"delete('/users')"},
+        {label:'allow_read', call:"update('UserGroups',#{gid},'read')"},
+        {label:'allow_write',call:"update('UserGroups',#{gid},'write')"},
+        {label:'allow_admin',call:"update('UserGroups',#{gid},'admin')"},
+        {label:'deny',       call:"update('UserGroups',#{gid},'denied')"},
       ]
       gname=group.name
       @header=tts('user list,group:') + gname
-      caption_columns='email;vname;active'
-      @columns = get_array(caption_columns,0)
-      @captions= get_array(caption_columns,1) 
+      @column_ui='email;vname;my_role=role;active'
+      @objs.each_with_index do |user,index|
+        #user.set_role_of_group(gid)
+        user.my_role=user.role_of_group(gid)
+      end
     end
   end  
   def new

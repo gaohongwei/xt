@@ -24,5 +24,25 @@ class UserGroup < ActiveRecord::Base
     ugs=self.by_user_group(uid,gid)
     #UserGroup.create!(user_id:uid,group_id:gid,role_id:rid) if ugs.empty?
     self.create_user_group_role!(uid,gid,rid) if ugs.empty?
-  end  
+  end
+  def self.update(uid,gid,role_name='read')
+    role=Role.find_by_name(role_name)
+    return if role.nil?
+    rid=role.id 
+    #UserGroup.create!(user_id:uid,group_id:gid,role_id:rid) if ugs.empty?
+    if uid.is_a?(Integer)
+      uids=[uid]
+    else
+      uids=uid
+    end
+    uids.each do |uid|
+      ugs=self.by_user_group(uid,gid)
+      if ugs.any?
+        ugs[0].role_id=rid
+        ugs[0].save!
+      else
+        self.create_user_group_role!(uid,gid,rid)       
+      end
+    end
+  end     
 end

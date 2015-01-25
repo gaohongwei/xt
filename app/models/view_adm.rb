@@ -1,5 +1,4 @@
 class ViewAdm < ActiveRecord::Base
-
   scope :by_controller, lambda {|controller|
     where(:name=>controller)
   }

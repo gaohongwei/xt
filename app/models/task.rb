@@ -15,18 +15,22 @@ class Task < ActiveRecord::Base
   scope :by_ids, lambda {|id|
     #where(ancestry:nil).where(active:true)  
     where(id:id)      
-  }  
-  def set_parent_id
-    self.parent_id=self.pid   
-  end 
+  } 
   scope :by_user, lambda {|id|
     #where(ancestry:nil).where(active:true)  
     where(user_id:id)
-  }
+  }   
+  def set_parent_id
+    self.parent_id=self.pid   
+  end 
+
   def options
     TaskOption.by_task(self.id)
   end
   def option_users
     TaskOption.by_task(self.id)
-  end    
+  end  
+  def root_task_user_groups
+    self.root.gorup_ids
+  end  
 end

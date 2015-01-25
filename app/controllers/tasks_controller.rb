@@ -5,12 +5,12 @@ class TasksController < AdminController
       task=Task.find(task_id).root
       task_ids=task.descendant_ids  
       task_ids<<task_id unless task_ids.include?(task_id)
-      @objs = Task.by_ids(task_ids).page(params[:page]).per(10)
+      @objs = Task.by_ids(task_ids)
     else
-      @objs = Task.top.page(params[:page]).per(10) 
+      @objs = @objs.top 
     end
   end   
-  def show
+  def show_customize
     current_user||=User.find(2)
     task_id= params[:id]    
     scope= params[:scope]
@@ -27,7 +27,7 @@ class TasksController < AdminController
       @user_id=current_user.id 
     end        
   end
-  def new
+  def new_customize
     pid=params[:pid]
     @obj=Task.new(parent_id:pid,pid:pid,active:true,user_id:current_user.id,public:false)
   end  

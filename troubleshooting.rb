@@ -34,10 +34,14 @@ gem 'jquery-rails'
 7.Can't verify CSRF token authenticity
 
 8. def tts
+support english?
+
+9. current_user available in data model?
 
 
 
-7 Run in production
+
+100 Run in production
 RAILS_ENV=production rake assets:precompile
 config/initializers/devise.rb
   config.secret_key = '66cd920e65515ef6cd42bf593f61bde8cea97b34741155c30a887f84fb932319492f3710b2d1281504abd664ec9a1d86861f4e3412b052a8f3b422119f52a462'

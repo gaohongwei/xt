@@ -2,24 +2,27 @@ require 'crud_helper'
 class AdminController < ApplicationController
   before_filter :authenticate_user_or_qq!, only:[:new,:create,:edit,:update, :show,:destroy] 
   before_action :set_obj, only: [:show, :edit, :update, :destroy]
-  prepend_before_filter :login_qq   
-
   #skip_authorize_resource :devise
+  #load_and_authorize_resource 
   rescue_from CanCan::AccessDenied do |exception|
-    redirect_to root_url, notice:tt("denied")
+    msg=tt("denied")
+    logger.error exception.message
+    logger.error exception.backtrace.join("\n")    
+    redirect_to root_url, notice:msg    
   end 
   rescue_from ActiveRecord::RecordNotFound do |exception|
-    redirect_to root_url, notice:tt("no_such_data")
-    #:laert=>exception.message
+    msg=tt("no_such_data")
+    logger.error exception.message
+    logger.error exception.backtrace.join("\n")    
+    redirect_to root_url, notice:msg
   end 
-  #rescue_from ActiveRecord::RecordNotFound, :with => :record_not_found
 
   before_filter do  # fix ActiveModel::ForbiddenAttributesError
     resource = controller_name.singularize.to_sym
     method = "get_params"
     params[resource] &&= send(method) if respond_to?(method, true)
   end 
-  load_and_authorize_resource 
+
   def record_not_found  
     flash[:notice] = "No specified data."
     redirect_to :action => 'index' 
@@ -57,7 +60,6 @@ class AdminController < ApplicationController
   end  
 
   def get_qq
-
     return nil#'1234567'
   end  
 end

@@ -4,7 +4,9 @@ class Group < ActiveRecord::Base
   has_many :users,through: :user_groups
   has_many :tasks,through: :task_groups  
   before_save :set_default
-  before_destroy :stop_delete
+  #before_destroy :stop_delete
+  scope :by_id, lambda {|id| where(id:id)} 
+  scope :by_user,  lambda {|id|where(user_id:id)}    
   attr_accessor :my_role   
   def stop_delete
    if self.id < 11
@@ -20,5 +22,5 @@ class Group < ActiveRecord::Base
   end   
   def user_list
     self.users.map{|x|x.vname}.join(',')
-  end  
+  end
 end

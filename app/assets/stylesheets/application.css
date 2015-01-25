@@ -11,10 +11,11 @@
  * file per style scope.
  *
  *  formtastic provides wide input area
- *= require formtastic 
- *= require formtastic_changes
- *= require formtastic-bootstrap
  *= require bootstrap320.min.css
+ *= require formtastic 
+ *= require formtastic-bootstrap
+ *= require formtastic_changes
+ *= require jquery.toastmessage.css 
  *  require_tree .
  *  require_self
  */
